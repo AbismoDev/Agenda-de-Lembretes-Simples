@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>Agenda de Lembrete Simples</title>
+</head>
+<body>
+    <main>
+        <section>
+            <div class="container">
+                <div class="container--app">
+                    <div class="container--texto">
+                        <h1>Agenda de Lembrete Simples</h1>
+                        <p>Insira a seguir a data do lembrete e uma mensagem desse lembrete!</p>
+                    </div>
+                    <form id="form" class="formularios">
+                        <div class="container--input">
+                            <label for="data--lembrete">Data do lembrete:</label>
+                            <input type="datetime-local" name="data--lembrete" id="data--lembrete">
+                        </div>
+                        <div class="container--input">
+                            <label for="msg--lembrete">Mensagem do Lembrete:</label>
+                            <textarea name="msg--lembrete" id="msg--lembrete"></textarea>
+                        </div>
+                        <button type="submit">Cadastrar Lembrete</button>
+                    </form>
+                    <div id="res" class="container--res">
+                        <div class="container--feedback sucesso">
+                            <p>Lembrete agendado para DD/MM/AAAA às HH:MM!</p>
+                        </div>
+                        <div class="container--feedback aviso">
+                            <p>O limite da mensagem é de 450 caracteres!</p>
+                        </div>
+                        <div class="container--feedback falha">
+                            <p>Corrija os campos em vermelho para cadastrar um lembrete!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/index.js"></script>
+</body>
+</html>
