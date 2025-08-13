@@ -19,12 +19,16 @@
                     </div>
                     <form id="form" class="formularios">
                         <div class="container--input">
+                            <label for="nome--lembrete">Nome do Lembrete:</label>
+                            <input type="text" name="nome--lembrete" id="nome--lembrete">
+                        </div>
+                        <div class="container--input">
                             <label for="data--lembrete">Data do lembrete:</label>
                             <input type="datetime-local" name="data--lembrete" id="data--lembrete">
                         </div>
                         <div class="container--input">
                             <label for="msg--lembrete">Mensagem do Lembrete:</label>
-                            <textarea name="msg--lembrete" id="msg--lembrete"></textarea>
+                            <textarea name="msg--lembrete" id="msg--lembrete" maxlength="150px"></textarea>
                         </div>
                         <button type="submit">Cadastrar Lembrete</button>
                     </form>
