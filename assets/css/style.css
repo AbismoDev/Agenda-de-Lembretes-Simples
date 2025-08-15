@@ -26,6 +26,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    position: relative;
     max-width: 800px;
     display: flex;
     width: 100%;
@@ -41,7 +42,8 @@ body {
     gap: 6px;
 }
 
-.container--texto h1 {
+.container--texto h1,
+.container--modal h2 {
     color: #26303F;
 }
 
@@ -65,13 +67,13 @@ body {
 .container--input input {
     border: 1px solid #26303F;
     text-align: center;
+    border-radius: 5px;
     max-width: 200px;
     cursor: pointer;
     font-size: 16px;
     outline: none;
     height: 35px;
     width: 100%;
-    border-radius: 5px;
 }
 
 .container--input textarea {
@@ -100,7 +102,9 @@ body {
     width: 100%;
 }
 
-.formularios button:hover {
+.formularios button:hover,
+.container--close--modal button:hover,
+.lembrete button:hover {
     transform: scale(.955);
 }
 
@@ -127,4 +131,74 @@ body {
 .falha {
     background-color: #ffe2e2;
     color: #c50909;
+}
+
+.container--modal {
+    border: 2px solid #26303F;
+    background-color: white;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 30px 40px;
+    position: absolute;
+    max-width: 600px;
+    display: none;
+    width: 100%;
+    gap: 10px;
+}
+
+.container--close--modal {
+    justify-content: flex-end;
+    display: flex;
+}
+
+.container--close--modal button {
+    background-color: #26303F;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    transition: .3s;
+    cursor: pointer;
+    color: white;
+    height: 35px;
+    border: none;
+    width: 35px;
+}
+
+.container--lembretes {
+    background-color: #ffe2e2;
+    flex-direction: column;
+    overflow-y: scroll;
+    display: flex;
+    height: 300px;
+    padding: 5px;
+    gap: 20px;
+}
+
+.lembrete {    
+    border: 2px solid #26303F;
+    align-items: flex-start;
+    flex-direction: column;
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+}
+
+.lembrete button {
+    justify-content: center;
+    background-color: red;
+    align-items: center;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .3s;
+    color: white;
+    display: flex;
+    height: 30px;
+    border: none;
+    width: 150px;
+    gap: 5px;
+}
+
+.destaque {
+    font-weight: 600;
 }

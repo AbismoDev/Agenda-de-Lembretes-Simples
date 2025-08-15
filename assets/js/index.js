@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let listaLembretes = [];
     let id = 1;
 
+    let botaoCriado = false;
+
     const form = document.querySelector("#form");
     form.addEventListener("submit", (e) => {
         e.preventDefault();        
@@ -11,19 +13,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const inputMsgLembrete = document.querySelector("#msg--lembrete");
         const res = document.querySelector("#res");
 
-        const valorNomeLembrete = inputNomeLembrete.value;
-        const valorDataLembrete = inputDataLembrete.value;
-        const valorMsgLembrete = inputMsgLembrete.value;
+        let valorNomeLembrete = inputNomeLembrete.value;
+        let valorDataLembrete = inputDataLembrete.value;
+        let valorMsgLembrete = inputMsgLembrete.value;
 
         if(valorDataLembrete === "" || valorNomeLembrete === "" || valorMsgLembrete === "") {
-            // Erro
-            (valorNomeLembrete === "") ? inputNomeLembrete.style.border = "1px solid red" : inputNomeLembrete.style.border = "1px solid #26303F";
-            (valorDataLembrete === "") ? inputDataLembrete.style.border = "1px solid red" : inputDataLembrete.style.border = "1px solid #26303F";
-            (valorMsgLembrete === "") ? inputMsgLembrete.style.border = "1px solid red" : inputMsgLembrete.style.border = "1px solid #26303F";           
+            // Erro  
 
             res.innerHTML = `                
                 <div class="container--feedback falha">
-                    <p>Corrija os campos em vermelho para cadastrar um lembrete!</p>
+                    <p>Insira todos os campos corretamente!</p>
                 </div>
             `;
 
@@ -57,6 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         );
 
+        valorNomeLembrete = "";
+        valorDataLembrete = "";
+        valorMsgLembrete = "";
+
         id++;
 
         res.innerHTML = `
@@ -75,7 +78,46 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log("Lembrete " + (i + 1));
                 listaLembretes[i].lembrete_feito = true;
             }            
-        }    
+        }   
+        
+        if(listaLembretes.length > 0) {
+
+            const btnMostrarLista = document.createElement("button");
+            btnMostrarLista.type = "button";
+            btnMostrarLista.textContent = "Mostrar Lembretes";
+
+            if(!botaoCriado) {
+                form.appendChild(btnMostrarLista);
+                botaoCriado = true;
+            }
+
+            btnMostrarLista.addEventListener("click", () => {
+                // Abriremos um modal e mostraremos nossos lembretes cadastrados!
+                console.log("Abrimos Modal!");
+                // Pegaremos o container--modal
+                const modal = document.querySelector(".container--modal");
+                modal.style.display = "flex";
+                const btnCloseModal = document.querySelector("#close--modal");
+                btnCloseModal.addEventListener("click", () => modal.style.display = "none");
+
+                // Quando abrimos o modal
+                const containerLembrete = document.querySelector("#container--lembrete");
+                containerLembrete.innerHTML = "";
+                listaLembretes.forEach((lembrete) =>
+                    containerLembrete.innerHTML += `
+                        <div class="lembrete">
+                            <div>
+                                <p><span class="destaque">Nome:</span> ${lembrete.nome_lembrete}</p>
+                                <p><span class="destaque">Data e Hora:</span> ${lembrete.data_lembrete_formatada} e ${lembrete.hora_lembrete_formatada}</p>
+                                <p><span class="destaque">Mensagem:</span> ${lembrete.msg_lembrete}</p>
+                            </div>
+                            <button id="${lembrete.id}"><i class="fa-solid fa-trash"></i>Excluir Lembrete</button>
+                        </div>
+                    `                    
+                );
+
+            });
+        }
     });
 
 });
