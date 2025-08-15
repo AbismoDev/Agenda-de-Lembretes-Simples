@@ -21,24 +21,34 @@ document.addEventListener("DOMContentLoaded", () => {
         if(valorDataLembrete === "" || valorNomeLembrete === "" || valorMsgLembrete === "") {
             mensagem = "Insira todos os campos corretamente!";
             res.innerHTML = exibirMensagem(mensagem, "falha");
+            limpaCamposInput(inputNomeLembrete, inputDataLembrete, inputMsgLembrete);
             limpaMensagemFeedback(res);
 
             return;
         }
 
         const dataLembrete = new Date(valorDataLembrete);
+        const dataAtual = new Date();
+
+        if(dataLembrete < dataAtual) {
+            mensagem = "A data do lembrete tem que ser maior que a data de hoje!";
+            res.innerHTML = exibirMensagem(mensagem, "falha");
+            limpaCamposInput(inputNomeLembrete, inputDataLembrete, inputMsgLembrete);
+            limpaMensagemFeedback(res);
+            
+            return;
+        }
+
         const dataEHoraLembrete = formataDatEHoraLembrete(dataLembrete);
 
         adicionaLembreteNaLista(valorNomeLembrete, valorMsgLembrete, dataLembrete, dataEHoraLembrete);
-        inputNomeLembrete.value = "";
-        inputDataLembrete.value = "";
-        inputMsgLembrete.value = "";
+        limpaCamposInput(inputNomeLembrete, inputDataLembrete, inputMsgLembrete);
 
         mensagem = `Lembrete agendado para ${listaLembretes[listaLembretes.length - 1].data_lembrete_formatada} às ${listaLembretes[listaLembretes.length - 1].hora_lembrete_formatada}!`;
         res.innerHTML = exibirMensagem(mensagem, "sucesso");
         limpaMensagemFeedback(res);
 
-        criaLembrete();
+        criaLembrete(dataAtual);
         
         if(listaLembretes.length > 0) {
             const btnMostrarLista = criaBotaoMostrarLembretes();
@@ -123,9 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
         id++;
     }
 
-    function criaLembrete() {
-        const dataAtual = new Date();
-
+    function criaLembrete(dataAtual) {
         for(let i = 0; i < listaLembretes.length; i++) {
             const tempoEmMilissegundos = listaLembretes[i].data_lembrete.getTime() - dataAtual.getTime();
 
@@ -156,6 +164,12 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             container.innerHTML = "";
         }, 5000);
+    }
+
+    function limpaCamposInput(inputNome, inputData, inputMsg) {
+        inputNome.value = "";
+        inputData.value = "";
+        inputMsg.value = "";
     }
 
 });
