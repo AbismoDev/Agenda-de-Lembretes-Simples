@@ -63,6 +63,7 @@ body {
 }
 
 .container--input input {
+    border: 1px solid #26303F;
     text-align: center;
     max-width: 200px;
     cursor: pointer;
@@ -70,9 +71,11 @@ body {
     outline: none;
     height: 35px;
     width: 100%;
+    border-radius: 5px;
 }
 
 .container--input textarea {
+    border: 1px solid #26303F;
     border-radius: 5px;
     max-width: 400px;
     font-size: 16px;
@@ -119,11 +122,6 @@ body {
 .sucesso {
     background-color: #b7ffbf;
     color: #197423;
-}
-
-.aviso {
-    background-color: #ffff9d;
-    color: rgb(192, 192, 41);
 }
 
 .falha {
