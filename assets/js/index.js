@@ -101,23 +101,44 @@ document.addEventListener("DOMContentLoaded", () => {
                 btnCloseModal.addEventListener("click", () => modal.style.display = "none");
 
                 // Quando abrimos o modal
-                const containerLembrete = document.querySelector("#container--lembrete");
-                containerLembrete.innerHTML = "";
-                listaLembretes.forEach((lembrete) =>
-                    containerLembrete.innerHTML += `
-                        <div class="lembrete">
-                            <div>
-                                <p><span class="destaque">Nome:</span> ${lembrete.nome_lembrete}</p>
-                                <p><span class="destaque">Data e Hora:</span> ${lembrete.data_lembrete_formatada} e ${lembrete.hora_lembrete_formatada}</p>
-                                <p><span class="destaque">Mensagem:</span> ${lembrete.msg_lembrete}</p>
-                            </div>
-                            <button id="${lembrete.id}"><i class="fa-solid fa-trash"></i>Excluir Lembrete</button>
-                        </div>
-                    `                    
-                );
+                mostrarListaLembretes();
+                eventoDeletar();
 
             });
         }
     });
+
+    function mostrarListaLembretes() {
+        const containerLembrete = document.querySelector("#container--lembrete");
+            containerLembrete.innerHTML = "";
+            listaLembretes.forEach((lembrete) =>
+                containerLembrete.innerHTML += `
+                    <div class="lembrete">
+                        <div>
+                            <p><span class="destaque">Nome:</span> ${lembrete.nome_lembrete}</p>
+                            <p><span class="destaque">Data e Hora:</span> ${lembrete.data_lembrete_formatada} e ${lembrete.hora_lembrete_formatada}</p>
+                            <p><span class="destaque">Mensagem:</span> ${lembrete.msg_lembrete}</p>
+                        </div>
+                        <button id="${lembrete.id}" class="deleteButton"><i class="fa-solid fa-trash"></i>Excluir Lembrete</button>
+                    </div>
+                `                    
+            );
+    }
+
+    function deletarLembrete(e) {
+        const id = parseInt(e.target.id);
+        const idParaRemover = listaLembretes.findIndex(lembrete => lembrete.id === id);
+        listaLembretes.splice(idParaRemover, 1);    
+        mostrarListaLembretes();   
+        eventoDeletar(); 
+    }
+
+    function eventoDeletar() {
+        const deleteButton = document.querySelectorAll('.deleteButton');
+        console.log("Quantos btn tenho " + deleteButton.length);
+        for(let i = 0; i < deleteButton.length; i++) {
+            deleteButton[i].addEventListener("click", (e) => deletarLembrete(e));
+        }
+    }
 
 });
