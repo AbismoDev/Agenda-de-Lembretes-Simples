@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.container {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+}
+
+.container--app {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    max-width: 800px;
+    display: flex;
+    width: 100%;
+    gap: 15px;
+}
+
+.container--texto {
+    flex-direction: column;
+    text-align: center;
+    max-width: 400px;
+    display: flex;
+    width: 100%;
+    gap: 6px;
+}
+
+.container--texto h1,
+.container--modal h2 {
+    color: #26303F;
+}
+
+.formularios {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    gap: 15px;
+}
+
+.container--input {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    width: 100%;
+    gap: 5px;
+}
+
+.container--input input {
+    border: 1px solid #26303F;
+    text-align: center;
+    border-radius: 5px;
+    max-width: 200px;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    height: 35px;
+    width: 100%;
+}
+
+.container--input textarea {
+    border: 1px solid #26303F;
+    border-radius: 5px;
+    max-width: 400px;
+    font-size: 16px;
+    outline: none;
+    height: 100px;
+    padding: 5px;
+    resize: none;
+    width: 100%;
+}
+
+.formularios button {
+    background-color: #26303F;
+    border-radius: 5px;
+    max-width: 200px;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s;
+    color: white;
+    height: 40px;
+    border: none;
+    width: 100%;
+}
+
+.formularios button:hover,
+.container--close--modal button:hover,
+.lembrete button:hover {
+    transform: scale(.955);
+}
+
+.container--res {
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     display: flex;
+     gap: 10px;
+}
+
+.container--feedback {    
+    border-radius: 5px;
+    font-weight: 600;
+    padding: 4px 8px;
+    font-size: 18px;
+}
+
+.sucesso {
+    background-color: #b7ffbf;
+    color: #197423;
+}
+
+.falha {
+    background-color: #ffe2e2;
+    color: #c50909;
+}
+
+.container--modal {
+    border: 2px solid #26303F;
+    background-color: white;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 30px 40px;
+    position: absolute;
+    max-width: 600px;
+    display: none;
+    width: 100%;
+    gap: 10px;
+}
+
+.container--close--modal {
+    justify-content: flex-end;
+    display: flex;
+}
+
+.container--close--modal button {
+    background-color: #26303F;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    transition: .3s;
+    cursor: pointer;
+    color: white;
+    height: 35px;
+    border: none;
+    width: 35px;
+}
+
+.container--lembretes {
+    background-color: #ffe2e2;
+    flex-direction: column;
+    overflow-y: scroll;
+    display: flex;
+    height: 300px;
+    padding: 5px;
+    gap: 20px;
+}
+
+.lembrete {    
+    border: 2px solid #26303F;
+    align-items: flex-start;
+    flex-direction: column;
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+}
+
+.lembrete button {
+    justify-content: center;
+    background-color: red;
+    align-items: center;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .3s;
+    color: white;
+    display: flex;
+    height: 30px;
+    border: none;
+    width: 150px;
+    gap: 5px;
+}
+
+.destaque {
+    font-weight: 600;
+}

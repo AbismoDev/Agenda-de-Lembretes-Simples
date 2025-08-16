@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>Agenda de Lembrete Simples</title>
+</head>
+<body>
+    <main>
+        <section>
+            <div class="container">
+                <div class="container--app">
+                    <div class="container--texto">
+                        <h1>Agenda de Lembrete Simples</h1>
+                        <p>Insira a seguir a data do lembrete e uma mensagem desse lembrete!</p>
+                    </div>
+                    <form id="form" class="formularios">
+                        <div class="container--input">
+                            <label for="nome--lembrete">Nome do Lembrete:</label>
+                            <input type="text" name="nome--lembrete" id="nome--lembrete" placeholder="Nome do lembrete">
+                        </div>
+                        <div class="container--input">
+                            <label for="data--lembrete">Data do lembrete:</label>
+                            <input type="datetime-local" name="data--lembrete" id="data--lembrete">
+                        </div>
+                        <div class="container--input">
+                            <label for="msg--lembrete">Mensagem do Lembrete:</label>
+                            <textarea name="msg--lembrete" id="msg--lembrete" maxlength="150" placeholder="Digite uma mensagem para o lembrete"></textarea>
+                        </div>
+                        <button type="submit">Cadastrar Lembrete</button>
+                    </form>
+
+                    <div class="container--modal">
+                        <div class="container--close--modal">
+                            <button id="close--modal">X</button>
+                        </div>
+                        <h2>Seus Lembretes:</h2>
+                        <div class="container--lembretes" id="container--lembrete">
+                        </div>
+                    </div>
+
+                    <div id="res" class="container--res">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/index.js"></script>
+    <script src="https://kit.fontawesome.com/8d1e25daaf.js" crossorigin="anonymous"></script>
+</body>
+</html>
